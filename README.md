@@ -15,8 +15,8 @@ var M = require('monoid');
  */
 
 var Any = M.Monoid({
-  identity: false,
-  binary: function (v1, v2) {
+  identity : false,
+  binary   : function (v1, v2) {
     return v1 || v2;
   }
 });
@@ -42,12 +42,26 @@ any([false, false, false]);
  */
 
 var Product = M.Monoid({
-  identity: 1,
-  binary: function (v1, v2) {
+  identity : 1,
+  binary   : function (v1, v2) {
     return v1 * v2;
   }
 });
 
 M.applyWith(Product, [3, 5, 10]);
 // => 150
+
+
+/*
+ * Shorthand syntax for well-known binaries
+ */
+var Sum = M.Monoid({
+  identity : 0,
+  binary   : '+'
+});
+
+var sum = M.applyWith(Sum);
+
+sum([10, 32, 11])
+// => 53
 ```
