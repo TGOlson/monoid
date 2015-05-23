@@ -58,15 +58,15 @@ describe('Monoid Factory', function() {
   });
 
   it('should provide an extract function', function() {
-    expect(M.extract(Any(true))).toBe(true)
-    expect(M.extract(Any(false))).toBe(false)
+    expect(M.extract(Any(true))).toBe(true);
+    expect(M.extract(Any(false))).toBe(false);
   });
 
   it('should provide a way to apply a monoid type over a list of non-monoids', function() {
     var any = M.applyWith(Any);
 
-    expect(any([true, false, false])).toBe(true)
-    expect(any([false, false, false])).toBe(false)
+    expect(any([true, false, false])).toBe(true);
+    expect(any([false, false, false])).toBe(false);
   });
 
   it('should allow some binaries to be defined with a string representation', function() {
@@ -81,8 +81,8 @@ describe('Monoid Factory', function() {
       append  : jasmine.any(Function)
     });
 
-    expect(M.append(Any(true), Any(true))).toBeTheSameMonoidAs(Any(true))
-    expect(M.append(Any(true), Any(false))).toBeTheSameMonoidAs(Any(true))
-    expect(M.append(Any(false), Any(false))).toBeTheSameMonoidAs(Any(false))
+    expect(M.append(Any(true), Any(true))).toBeTheSameMonoidAs(Any(true));
+    expect(M.append(Any(true), Any(false))).toBeTheSameMonoidAs(Any(true));
+    expect(M.append(Any(false), Any(false))).toBeTheSameMonoidAs(Any(false));
   });
 });
