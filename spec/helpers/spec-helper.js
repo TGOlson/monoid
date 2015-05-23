@@ -1,3 +1,5 @@
+'use strict';
+
 var CustomMatchers = require('./custom-matchers');
 
 // Add all customer matchers

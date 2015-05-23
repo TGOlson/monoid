@@ -20,12 +20,12 @@ var makeMonoid = R.curry(function(identity, binary, v) {
 });
 
 
+var maybeParseBinary = R.ifElse(R.is(Function), R.identity, Binary.getFn);
+
+
 function Monoid(props) {
   return makeMonoid(props.identity, maybeParseBinary(props.binary));
 }
-
-
-var maybeParseBinary = R.ifElse(R.is(Function), R.identity, Binary.getFn);
 
 
 function empty(m) {

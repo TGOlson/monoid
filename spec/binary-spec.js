@@ -1,3 +1,5 @@
+'use strict';
+
 var Binary = require('../src/binary');
 
 describe('Binary', function() {

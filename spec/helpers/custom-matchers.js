@@ -1,4 +1,6 @@
-function toBeTheSameMonoidAs(util, customEqualityTesters) {
+'use strict';
+
+function toBeTheSameMonoidAs() {
   return {
     compare: function(actual, expected) {
       return {

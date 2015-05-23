@@ -1,3 +1,6 @@
+'use strict';
+
+
 var R = require('ramda');
 
 
@@ -6,7 +9,7 @@ var binaryFns = {
   '*'  : function(v1, v2) {return v1 * v2;},
   '&&' : function(v1, v2) {return v1 && v2;},
   '||' : function(v1, v2) {return v1 || v2;}
-}
+};
 
 
 var isKnownBinaryFn = R.has(R.__, binaryFns);
@@ -29,4 +32,4 @@ function unkownBinaryError(x) {
 
 module.exports = {
   getFn: getFn
-}
+};

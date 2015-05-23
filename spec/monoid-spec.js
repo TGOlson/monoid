@@ -1,3 +1,5 @@
+'use strict';
+
 var M = require('../src/monoid');
 
 describe('Monoid Factory', function() {
