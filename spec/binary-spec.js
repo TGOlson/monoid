@@ -1,8 +1,8 @@
-var Operator = require('../src/operator');
+var Binary = require('../src/binary');
 
-describe('Operator', function() {
+describe('Binary', function() {
   it('should get an operator from a string representation', function() {
-    var add = Operator.get('+');
+    var add = Binary.getFn('+');
 
     expect(add).toEqual(jasmine.any(Function));
 
@@ -11,6 +11,6 @@ describe('Operator', function() {
   });
 
   it('should throw an error if an operator does no exists', function() {
-    expect(Operator.get.bind(null, '~~')).toThrowError('Unkown operator "~~"');
+    expect(Binary.getFn.bind(null, '~~')).toThrowError('Cannot parse binary from "~~"');
   });
 });

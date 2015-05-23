@@ -2,7 +2,7 @@
   "name": "monoid",
   "version": "0.0.0",
   "description": "Simple monoid factory in JavaScript.",
-  "main": "monoid.js",
+  "main": "src/monoid.js",
   "scripts": {
     "test": "jasmine"
   },
