@@ -1,6 +1,7 @@
 'use strict';
 
 var R = require('ramda');
+var Operator = require('./operator');
 
 
 var extract = R.invoke('extract', []);
@@ -20,8 +21,11 @@ var makeMonoid = R.curry(function(identity, binary, v) {
 
 
 function Monoid(props) {
-  return makeMonoid(props.identity, props.binary);
+  return makeMonoid(props.identity, maybeParseBinary(props.binary));
 }
+
+
+var maybeParseBinary = R.ifElse(R.is(Function), R.identity, Operator.get);
 
 
 function empty(m) {

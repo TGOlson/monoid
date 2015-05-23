@@ -7,7 +7,7 @@ describe('Monoid Factory', function() {
     Any = M.Monoid({
       identity : false,
       binary   : function(v1, v2) {return v1 || v2;}
-    })
+    });
   });
 
   it('should be a value constructor', function() {
@@ -31,11 +31,11 @@ describe('Monoid Factory', function() {
   });
 
   it('should have a binary function that returns a new monoid instance', function() {
-    expect(Any(true).append(Any(true))).toBeTheSameMonoidAs(Any(true))
+    expect(Any(true).append(Any(true))).toBeTheSameMonoidAs(Any(true));
 
-    expect(Any(false).append(Any(true))).toBeTheSameMonoidAs(Any(true))
+    expect(Any(false).append(Any(true))).toBeTheSameMonoidAs(Any(true));
 
-    expect((Any(false)).append(Any(false))).toBeTheSameMonoidAs(Any(false))
+    expect((Any(false)).append(Any(false))).toBeTheSameMonoidAs(Any(false));
   });
 
   it('should provide an empty function', function() {
@@ -44,17 +44,17 @@ describe('Monoid Factory', function() {
   });
 
   it('should provide an append function', function() {
-    expect(M.append(Any(true), Any(true))).toBeTheSameMonoidAs(Any(true))
+    expect(M.append(Any(true), Any(true))).toBeTheSameMonoidAs(Any(true));
 
-    expect(M.append(Any(true), Any(false))).toBeTheSameMonoidAs(Any(true))
+    expect(M.append(Any(true), Any(false))).toBeTheSameMonoidAs(Any(true));
 
-    expect(M.append(Any(false), Any(false))).toBeTheSameMonoidAs(Any(false))
+    expect(M.append(Any(false), Any(false))).toBeTheSameMonoidAs(Any(false));
   });
 
   it('should provide a concat function', function() {
-    expect(M.concat([Any(true), Any(false), Any(false)])).toBeTheSameMonoidAs(Any(true))
+    expect(M.concat([Any(true), Any(false), Any(false)])).toBeTheSameMonoidAs(Any(true));
 
-    expect(M.concat([Any(false), Any(false), Any(false)])).toBeTheSameMonoidAs(Any(false))
+    expect(M.concat([Any(false), Any(false), Any(false)])).toBeTheSameMonoidAs(Any(false));
   });
 
   it('should provide an extract function', function() {
@@ -67,5 +67,22 @@ describe('Monoid Factory', function() {
 
     expect(any([true, false, false])).toBe(true)
     expect(any([false, false, false])).toBe(false)
+  });
+
+  it('should allow some binaries to be defined with a string representation', function() {
+    var Any = M.Monoid({
+      identity : false,
+      binary   : '||'
+    });
+
+    expect(Any(true)).toEqual({
+      empty   : jasmine.any(Function),
+      extract : jasmine.any(Function),
+      append  : jasmine.any(Function)
+    });
+
+    expect(M.append(Any(true), Any(true))).toBeTheSameMonoidAs(Any(true))
+    expect(M.append(Any(true), Any(false))).toBeTheSameMonoidAs(Any(true))
+    expect(M.append(Any(false), Any(false))).toBeTheSameMonoidAs(Any(false))
   });
 });
