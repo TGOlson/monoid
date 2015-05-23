@@ -25,7 +25,7 @@
     "url": "https://github.com/TGOlson/monoid/issues"
   },
   "dependencies": {
-    "ramda": "^0.13.0"
+    "ramda": "^0.14.0"
   },
   "devDependencies": {
     "jasmine": "^2.3.1"
