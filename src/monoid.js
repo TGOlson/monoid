@@ -8,8 +8,6 @@ var extract = R.invoke('extract', []);
 
 var makeMonoid = R.curry(function(identity, binary, v) {
 
-  // test monoid identity and binary here
-
   var thisMonoid    = makeMonoid(identity, binary);
   var curriedBinary = R.curry(binary);
 
@@ -27,7 +25,7 @@ function Monoid(props) {
 
 
 function empty(m) {
-  return m.empty ? m.empty() : m().empty();
+  return m.empty ? m.empty() : m(null).empty();
 }
 
 
