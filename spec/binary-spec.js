@@ -12,6 +12,13 @@ describe('Binary', function() {
     expect(add(1, 2)).toBe(3);
   });
 
+  it('should provide common binaries', function() {
+    expect(Binary.getFn('+')(1, 2)).toBe(3);
+    expect(Binary.getFn('*')(1, 2)).toBe(2);
+    expect(Binary.getFn('||')(false, true)).toBe(true);
+    expect(Binary.getFn('&&')(false, true)).toBe(false);
+  });
+
   it('should throw an error if an operator does no exists', function() {
     expect(Binary.getFn.bind(null, '~~')).toThrowError('Cannot parse binary from "~~"');
   });
