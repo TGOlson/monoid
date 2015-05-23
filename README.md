@@ -1,5 +1,8 @@
 # Monoid
 
+[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
+
+
 Simple monoid factory in JavaScript.
 
 Easily define list reductions by providing an identity value and a binary function. Get the `reduce` (aka `concat`) for free.
@@ -65,3 +68,15 @@ var sum = M.applyWith(Sum);
 sum([10, 32, 11])
 // => 53
 ```
+
+### TODO
+
+* More examples/docs
+* Add more built in binaries
+* Consider additional shorthand `var Any = M.Monoid(false, '||')`.
+
+[travis-image]: https://travis-ci.org/TGOlson/monoid.svg?branch=master
+[travis-url]: https://travis-ci.org/TGOlson/monoid
+
+[coveralls-image]: https://coveralls.io/repos/TGOlson/monoid/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/r/TGOlson/monoid?branch=master
