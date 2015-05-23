@@ -28,6 +28,7 @@
     "ramda": "^0.14.0"
   },
   "devDependencies": {
+    "coveralls": "^2.11.2",
     "jasmine": "^2.3.1"
   },
   "homepage": "https://github.com/TGOlson/monoid"
