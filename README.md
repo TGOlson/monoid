@@ -2,6 +2,8 @@
 
 Simple monoid factory in JavaScript.
 
+Easily define list reductions by providing an identity value and a binary function. Get the `reduce` (aka `concat`) for free.
+
 ### Examples
 
 ```js
@@ -45,7 +47,6 @@ var Product = M.Monoid({
     return v1 * v2;
   }
 });
-
 
 M.applyWith(Product, [3, 5, 10]);
 // => 150
