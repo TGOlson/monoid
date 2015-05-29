@@ -20,7 +20,7 @@ describe('Monoid Factory', function() {
     expect(Any(true)).toEqual({
       empty   : jasmine.any(Function),
       extract : jasmine.any(Function),
-      append  : jasmine.any(Function)
+      concat  : jasmine.any(Function)
     });
   });
 
@@ -33,11 +33,11 @@ describe('Monoid Factory', function() {
   });
 
   it('should have a binary function that returns a new monoid instance', function() {
-    expect(Any(true).append(Any(true))).toBeTheSameMonoidAs(Any(true));
+    expect(Any(true).concat(Any(true))).toBeTheSameMonoidAs(Any(true));
 
-    expect(Any(false).append(Any(true))).toBeTheSameMonoidAs(Any(true));
+    expect(Any(false).concat(Any(true))).toBeTheSameMonoidAs(Any(true));
 
-    expect((Any(false)).append(Any(false))).toBeTheSameMonoidAs(Any(false));
+    expect((Any(false)).concat(Any(false))).toBeTheSameMonoidAs(Any(false));
   });
 
   it('should provide an empty function', function() {
@@ -45,18 +45,18 @@ describe('Monoid Factory', function() {
     expect(M.empty(Any)).toBeTheSameMonoidAs(Any(true).empty());
   });
 
-  it('should provide an append function', function() {
-    expect(M.append(Any(true), Any(true))).toBeTheSameMonoidAs(Any(true));
+  it('should provide an concat function', function() {
+    expect(M.concat(Any(true), Any(true))).toBeTheSameMonoidAs(Any(true));
 
-    expect(M.append(Any(true), Any(false))).toBeTheSameMonoidAs(Any(true));
+    expect(M.concat(Any(true), Any(false))).toBeTheSameMonoidAs(Any(true));
 
-    expect(M.append(Any(false), Any(false))).toBeTheSameMonoidAs(Any(false));
+    expect(M.concat(Any(false), Any(false))).toBeTheSameMonoidAs(Any(false));
   });
 
-  it('should provide a concat function', function() {
-    expect(M.concat([Any(true), Any(false), Any(false)])).toBeTheSameMonoidAs(Any(true));
+  it('should provide a way to reduce a monoid list', function() {
+    expect(M.concatAll([Any(true), Any(false), Any(false)])).toBeTheSameMonoidAs(Any(true));
 
-    expect(M.concat([Any(false), Any(false), Any(false)])).toBeTheSameMonoidAs(Any(false));
+    expect(M.concatAll([Any(false), Any(false), Any(false)])).toBeTheSameMonoidAs(Any(false));
   });
 
   it('should provide an extract function', function() {
@@ -80,11 +80,11 @@ describe('Monoid Factory', function() {
     expect(Any(true)).toEqual({
       empty   : jasmine.any(Function),
       extract : jasmine.any(Function),
-      append  : jasmine.any(Function)
+      concat  : jasmine.any(Function)
     });
 
-    expect(M.append(Any(true), Any(true))).toBeTheSameMonoidAs(Any(true));
-    expect(M.append(Any(true), Any(false))).toBeTheSameMonoidAs(Any(true));
-    expect(M.append(Any(false), Any(false))).toBeTheSameMonoidAs(Any(false));
+    expect(M.concat(Any(true), Any(true))).toBeTheSameMonoidAs(Any(true));
+    expect(M.concat(Any(true), Any(false))).toBeTheSameMonoidAs(Any(true));
+    expect(M.concat(Any(false), Any(false))).toBeTheSameMonoidAs(Any(false));
   });
 });

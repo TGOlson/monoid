@@ -15,7 +15,7 @@ var makeMonoid = R.curry(function(identity, binary, v) {
   return {
     extract : R.always(v),
     empty   : R.partial(thisMonoid, identity),
-    append  : R.compose(thisMonoid, curriedBinary(v), extract),
+    concat  : R.compose(thisMonoid, curriedBinary(v), extract),
   };
 });
 
@@ -33,26 +33,26 @@ function empty(m) {
 }
 
 
-function append(m1, m2) {
-  return m1.append(m2);
+function concat(m1, m2) {
+  return m1.concat(m2);
 }
 
 
-function concat(ms) {
-  return R.reduce(append, empty(R.head(ms)), ms);
+function concatAll(ms) {
+  return R.reduce(concat, empty(R.head(ms)), ms);
 }
 
 
 var applyWith = R.curry(function(m, vs) {
-  return extract(concat(R.map(m, vs)));
+  return extract(concatAll(R.map(m, vs)));
 });
 
 
 module.exports = {
   Monoid    : Monoid,
   empty     : empty,
-  append    : append,
   concat    : concat,
+  concatAll : concatAll,
   extract   : extract,
   applyWith : applyWith
 };
